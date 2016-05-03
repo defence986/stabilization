@@ -3,14 +3,12 @@ clear all;
 clc;
 % clear all;
 
+% read_coordsrow
 g = fopen('coords_all_0.8.txt', 'r');
 if g == -1
     error('Could not open file coords_all.txt.');
 end
 
-%[Rows,Cols] = size(coords_all);
-%Rows = 0;
-%Cols = 690;
 j = 1;
 
 if 0
@@ -19,7 +17,6 @@ while ~feof(g)
 end
 end
 
-%[coords_row,counts] = fread(g, [1 2], 'uint');
 [coords_row,counts] = fscanf(g, '%d %d', [1 2]);
 if (counts ~= 2)
     error('Invalid coords first row.');
@@ -81,7 +78,7 @@ end
 
 [vars,indx] = sort(std(Dist, 0, 2));
 Trace =Dist(indx(1), :);
-plot(Trace)
+plot(Trace);
 
 Fs = 30;
 plot_hht(Trace,1/Fs);
