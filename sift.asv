@@ -26,7 +26,7 @@ function [image, descriptors, locs] = sift(imageFile)
 % if isrgb(image)
 %    image = rgb2gray(image);
 % end
-image = imageFile;
+image = image
 if ndims(image) == 3
     image = rgb2gray(image);
 end

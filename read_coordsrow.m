@@ -1,3 +1,5 @@
+close all;
+clear all;
 clc;
 % clear all;
 
@@ -7,8 +9,8 @@ if g == -1
 end
 
 %[Rows,Cols] = size(coords_all);
-Rows = 0;
-Cols = 690;
+%Rows = 0;
+%Cols = 690;
 j = 1;
 
 if 0
@@ -79,3 +81,7 @@ end
 
 [vars,indx] = sort(std(Dist, 0, 2));
 Trace =Dist(indx(1), :);
+plot(Trace)
+
+Fs = 30;
+plot_hht(Trace,1/Fs);
