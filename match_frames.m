@@ -27,7 +27,7 @@ for k = 2 : numFrames-1
     frame2 = read(obj, k+1);
     [num, coords_adj] = match_adj(frame1, frame2);
     for m = 1 : num1
-        if Temp(m,1) ~= 0
+        if ((Temp(m,1) ~= 0) || (Temp(m,2)~= 0))
             for n = 1 : num
                 if (Temp(m,1)==coords_adj(n,1)) && (Temp(m,2)==coords_adj(n,2))
                     coords_all(m,(2*k+1)) = coords_adj(n,3);

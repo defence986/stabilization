@@ -38,11 +38,12 @@ for i = 1 : Rows
 end
 fclose(g);
 
-fprintf('************************\n');
+%fprintf('************************\n');
 [Rows,Cols] = size(Nonzero);
 %Rows
 %Cols
 %Nonzero(1,1)
+if 0
 for i = 1 : Rows
     for j = 1 : Cols
         fprintf('%f ', Nonzero(i,j));
@@ -51,6 +52,7 @@ for i = 1 : Rows
 end
 fprintf('\n');
 fprintf('************************\n');
+end
 
 Cols = Cols - 2;
 for i = 1 : Rows
@@ -59,6 +61,7 @@ for i = 1 : Rows
     end
 end
 
+if 0
 fprintf('************************\n');
 for i = 1 : Rows
     for j = 1 : Cols
@@ -68,6 +71,7 @@ for i = 1 : Rows
 end
 fprintf('\n');
 fprintf('************************\n');
+end
 
 Cols = Cols / 2;
 for i = 1 : Rows
@@ -78,7 +82,8 @@ end
 
 [vars,indx] = sort(std(Dist, 0, 2));
 Trace =Dist(indx(1), :);
-plot(Trace);
+%plot(Trace);
 
 Fs = 30;
 plot_hht(Trace,1/Fs);
+%exec_hht(Trace,1/Fs);

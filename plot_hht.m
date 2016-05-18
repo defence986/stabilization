@@ -23,14 +23,36 @@ for k = 1:length(imf)
 end
 [u,v] = sort(-b);
 b     = 1-b/max(b); % 后面绘图的亮度控制
-
+%b
 % Set time-frequency plots.
 N = length(x);
 c = linspace(0,(N-2)*Ts,N-1);
-for k = v(1:2) % 显示能量最大的两个IMF的瞬时频率
+
+if 0
+for k = v(1:length(imf))
+%for k = v(1:2) % 显示能量最大的两个IMF的瞬时频率
+   b([k k k])
    figure, plot(c,d{k},'k.','Color',b([k k k]),'MarkerSize',3);
    set(gca,'FontSize',8,'XLim',[0 c(end)],'YLim',[0 1/2/Ts]); xlabel('Time'), ylabel('Frequency');
    title(sprintf('IMF%d', k))
+end
+end
+
+M = length(imf);
+for k1 = 0:4:M-1
+    figure
+    for k2 = 1:min(4,M-k1)
+    %for k = v(1:2) % 显示能量最大的两个IMF的瞬时频率
+        k = v(k1+k2);
+        %b([k k k])
+        subplot(4,1,k2);
+        %plot(c,d{k},'k.','Color',b([k k k]),'MarkerSize',3);
+        plot(c,d{k},'k.','MarkerSize',3);
+        set(gca,'FontSize',8,'XLim',[0 c(end)],'YLim',[0 1/3/Ts]);
+        ylabel('Frequency');
+        title(sprintf('IMF%d', k))
+    end
+    xlabel('Time');
 end
 
 % Set IMF plots.
